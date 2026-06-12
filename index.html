@@ -68,116 +68,88 @@
   .letter-modal .paper{animation:letterRise .8s cubic-bezier(.2,.8,.3,1) both}
   @keyframes letterRise{from{opacity:0;transform:translateY(60px) rotate(-2deg)}to{opacity:1;transform:none}}
 
-  #gallery{
-  background:var(--cream-2);
-  text-align:center;
-}
-
-#gallery h2{
-  font-size:2.3rem;
-  font-style:italic;
-  color:var(--sepia);
-  margin-bottom:.5rem;
-}
-
-#gallery .sub{
-  color:var(--sepia-soft);
-  margin-bottom:2rem;
-  font-family:'Caveat',cursive;
-  font-size:1.4rem;
-  max-width:500px;
-  margin-inline:auto;
-}
-
-.polaroids{
-  display:flex;
-  justify-content:center;
-  gap:1.5rem;
-  flex-wrap:wrap;
-  max-width:900px;
-  margin:0 auto;
-}
-
-.polaroid{
-  width:180px;
-  background:#fff;
-  padding:10px 10px 45px;
-  position:relative;
-  box-shadow:0 10px 20px rgba(0,0,0,.12);
-  transition:.3s ease;
-}
-
-.polaroid:hover{
-  transform:translateY(-6px);
-}
-
-.polaroid:nth-child(1){
-  transform:rotate(-3deg);
-}
-
-.polaroid:nth-child(2){
-  transform:rotate(2deg);
-}
-
-.polaroid:nth-child(3){
-  transform:rotate(-2deg);
-}
-
-.polaroid .ph{
-  width:100%;
-  aspect-ratio:1/1;
-  background:linear-gradient(
-    135deg,
-    #e8d4b0,
-    #d6b178
-  );
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.polaroid .ph svg,
-.polaroid .ph img{
-  width:70px;
-  height:70px;
-}
-
-.polaroid .cap{
-  margin-top:12px;
-  text-align:center;
-  font-family:'Caveat',cursive;
-  color:var(--sepia);
-  font-size:1.15rem;
-  line-height:1.2;
-}
+  #gallery{background:var(--cream-2);text-align:center}
+  #gallery h2{font-size:2.3rem;font-style:italic;color:var(--sepia);margin-bottom:.5rem}
+  #gallery .sub{color:var(--sepia-soft);margin-bottom:2rem;font-family:'Caveat',cursive;font-size:1.4rem;max-width:500px;margin-inline:auto}
+  .polaroids{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;max-width:900px;margin:0 auto}
+  .polaroid{width:180px;background:#fff;padding:10px 10px 45px;position:relative;box-shadow:0 10px 20px rgba(0,0,0,.12);transition:.3s ease}
+  .polaroid:hover{transform:translateY(-6px)}
+  .polaroid:nth-child(1){transform:rotate(-3deg)}
+  .polaroid:nth-child(2){transform:rotate(2deg)}
+  .polaroid:nth-child(3){transform:rotate(-2deg)}
+  .polaroid .ph{width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,#e8d4b0,#d6b178);display:flex;align-items:center;justify-content:center;font-size:3rem}
+  .polaroid .cap{margin-top:12px;text-align:center;font-family:'Caveat',cursive;color:var(--sepia);font-size:1.15rem;line-height:1.2}
 
   #final{background:radial-gradient(circle at 50% 50%,#fff8e7,#ecdcb8)}
   #final h2{font-size:clamp(2rem,5vw,3.5rem);font-style:italic;color:var(--sepia);max-width:700px;line-height:1.3;margin-bottom:2rem}
   #final .quote{font-family:'Caveat',cursive;font-size:1.6rem;color:var(--rose);margin-bottom:3rem}
 
-  /* Photobooth */
+  /* Photobooth Fixes */
   #booth{background:#3a2a1a;color:var(--cream);min-height:auto;padding:4rem 1.5rem}
   #booth h2{font-size:2.5rem;font-style:italic;color:var(--cream-2);margin-bottom:.5rem}
   #booth .sub{color:#d4b88a;margin-bottom:2rem;font-family:'Caveat',cursive;font-size:1.4rem}
-  .booth-wrap{display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;align-items:flex-start;max-width:1100px;margin:0 auto}
-  .camera{background:#1f1610;padding:1rem;border-radius:14px;width:380px;max-width:100%}
+  .booth-wrap{display:flex;gap:3rem;flex-wrap:wrap;justify-content:center;align-items:flex-start;max-width:1100px;margin:0 auto}
+  
+  .camera{background:#1f1610;padding:1.5rem;border-radius:14px;width:380px;max-width:100%;box-shadow: 0 10px 30px rgba(0,0,0,0.3)}
   #video{width:100%;aspect-ratio:4/3;border-radius:8px;background:#000;object-fit:cover;display:block;transform:scaleX(-1)}
-  #flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;border-radius:8px}
-  .cam-box{position:relative}
+  #flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;border-radius:8px;z-index:10}
+  .cam-box{position:relative;overflow:hidden;border-radius:8px}
   .controls{margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
-  .ctrl-btn{padding:.6rem 1.2rem;border:1px solid var(--gold);color:var(--cream);background:transparent;border-radius:999px;cursor:pointer;font-family:'Cormorant Garamond',serif;letter-spacing:.05em;transition:all .3s}
+  .ctrl-btn{padding:.7rem 1.4rem;border:1.5px solid var(--gold);color:var(--cream);background:transparent;border-radius:999px;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:1rem;letter-spacing:.05em;transition:all .3s}
   .ctrl-btn:hover{background:var(--gold);color:#1f1610}
   .ctrl-btn:disabled{opacity:.4;cursor:not-allowed}
-  .countdown{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:8rem;color:#fff;text-shadow:0 0 30px rgba(0,0,0,.6);pointer-events:none}
+  .countdown{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:8rem;color:#fff;text-shadow:0 0 30px rgba(0,0,0,.6);pointer-events:none;z-index:11}
 
-  .strip-outer{padding:24px 18px;border-radius:6px;transition:background .4s}
-  .strip{background:transparent;width:200px;position:relative;padding-bottom:60px}
-  .strip .slot{width:100%;aspect-ratio:1;background:#2a1f15;margin-bottom:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#5a4a3a;font-family:'Caveat',cursive;border-radius:2px}
+  /* Corrected Strip Styles */
+  .strip-outer{
+    width: 240px; 
+    margin: 0 auto; 
+    padding: 20px 15px 40px; 
+    border-radius: 4px; 
+    transition: background .4s, transform .3s;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+  }
+  .strip-outer:hover { transform: translateY(-5px); }
+  
+  .strip{
+    background: transparent;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .strip .slot{
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #1a1a1a;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.2);
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
   .strip .slot img{width:100%;height:100%;object-fit:cover}
-  .strip .footer{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-family:'Caveat',cursive;font-size:1rem;padding:0 6px;word-wrap:break-word;white-space:pre-wrap}
+  
+  .strip .footer{
+    margin-top: 15px;
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    padding: 0 10px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    line-height: 1.2;
+  }
 
   /* Stickers on strip */
-  .strip{ /* needs to be position context for stickers */ }
   .sticker{position:absolute;cursor:move;user-select:none;touch-action:none;z-index:5}
   .sticker img{width:100%;height:100%;display:block;pointer-events:none;-webkit-user-drag:none}
   .sticker.selected{outline:2px dashed var(--gold);outline-offset:2px}
@@ -186,100 +158,61 @@
   .sticker .handle.resize{right:-7px;bottom:-7px;cursor:nwse-resize}
   .sticker .handle.del{left:-7px;top:-7px;cursor:pointer;background:#e07878;color:#fff;font-size:10px;line-height:10px;text-align:center;font-weight:bold}
 
+  /* Backgrounds */
   .bg-classic{background:#fffaf0;color:var(--sepia)}
-  .bg-classic .footer{color:var(--sepia)}
   .bg-noir{background:#0a0a0a;color:#f0e6d0}
-  .bg-noir .footer{color:#e6c98a}
   .bg-burgundy{background:linear-gradient(165deg,#4a0e1f,#2a0612);color:#f5d9c9}
-  .bg-burgundy .footer{color:#f0c5b0}
   .bg-rose{background:linear-gradient(160deg,#ffd9d9,#ff9ec0);color:#6b1f3a}
-  .bg-rose .footer{color:#6b1f3a}
   .bg-cream-floral{background:#fbf3e4;color:var(--sepia)}
-  .bg-cream-floral .footer{color:var(--sepia)}
   .bg-gold{background:linear-gradient(140deg,#1a1208,#3a2410 60%,#c9a96e);color:#fff5e0}
-  .bg-gold .footer{color:#fff5e0}
   .bg-stars{background:#0a0e2a radial-gradient(circle at 20% 30%,#fff 1px,transparent 1.5px),radial-gradient(circle at 70% 60%,#fff 1px,transparent 1.5px),radial-gradient(circle at 40% 80%,#fff 1px,transparent 1.5px),radial-gradient(circle at 85% 20%,#fff 1px,transparent 1.5px),radial-gradient(circle at 15% 75%,#fff 1px,transparent 1.5px);color:#e8d8ff}
-  .bg-stars .footer{color:#e8d8ff}
   .bg-custom{background-size:cover;background-position:center;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.5)}
-  .bg-custom .footer{color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7)}
 
-  .bg-picker{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin:1rem 0 .5rem;max-width:420px}
-  .bg-swatch{width:42px;height:42px;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:transform .2s, border-color .2s;background-size:cover;background-position:center}
-  .bg-swatch:hover{transform:scale(1.1)}
-  .bg-swatch.active{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,169,110,.4)}
+  .bg-picker{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin:1rem 0 1.5rem;max-width:420px}
+  .bg-swatch{width:42px;height:42px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .2s, border-color .2s;background-size:cover;background-position:center;box-shadow: 0 4px 10px rgba(0,0,0,0.2)}
+  .bg-swatch:hover{transform:scale(1.15)}
+  .bg-swatch.active{border-color:var(--gold);transform: scale(1.1)}
   .bg-swatch.upload{display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:#1f1610;color:var(--gold);border:2px dashed var(--gold)}
 
-  .layouts{display:flex;gap:.4rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap}
-  .layouts button{padding:.4rem .9rem;border:1px solid #6b4a2b;background:transparent;color:var(--cream);border-radius:6px;cursor:pointer;font-size:.85rem}
-  .layouts button.active{background:var(--gold);color:#1f1610;border-color:var(--gold)}
-  .mode-tabs{display:flex;gap:.4rem;justify-content:center;margin-bottom:1rem}
-  .mode-tabs button{padding:.5rem 1rem;border:1px solid #6b4a2b;background:transparent;color:var(--cream);border-radius:6px;cursor:pointer}
-  .mode-tabs button.active{background:var(--gold);color:#1f1610;border-color:var(--gold)}
+  .layouts{display:flex;gap:.5rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap}
+  .layouts button{padding:.5rem 1rem;border:1px solid #6b4a2b;background:transparent;color:var(--cream);border-radius:8px;cursor:pointer;font-size:.9rem;transition: all 0.2s}
+  .layouts button.active{background:var(--gold);color:#1f1610;border-color:var(--gold);font-weight: bold}
+  .mode-tabs{display:flex;gap:.5rem;justify-content:center;margin-bottom:1.2rem}
+  .mode-tabs button{padding:.6rem 1.2rem;border:1px solid #6b4a2b;background:transparent;color:var(--cream);border-radius:8px;cursor:pointer;transition: all 0.2s}
+  .mode-tabs button.active{background:var(--gold);color:#1f1610;border-color:var(--gold);font-weight: bold}
   .hidden{display:none !important}
 
   /* Editor panel */
-  .editor{background:#1f1610;padding:1rem;border-radius:12px;width:280px;max-width:100%;color:#d4b88a}
-  .editor h3{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--cream-2);font-size:1.2rem;margin-bottom:.6rem;border-bottom:1px solid #3a2a1a;padding-bottom:.4rem}
-  .editor label{display:block;font-family:'Caveat',cursive;font-size:1rem;color:#d4b88a;margin:.6rem 0 .25rem}
-  .editor input[type=text],.editor textarea,.editor select{width:100%;padding:.5rem;background:#2a1f15;border:1px solid #3a2a1a;color:var(--cream);border-radius:6px;font-family:inherit;font-size:.9rem}
-  .editor textarea{resize:vertical;min-height:50px}
-  .editor input[type=range]{width:100%}
-  .editor input[type=color]{width:46px;height:30px;border:none;background:transparent;cursor:pointer;padding:0}
-  .row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
-  .sticker-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:.35rem;margin-top:.4rem;max-height:140px;overflow-y:auto;padding:.3rem;background:#2a1f15;border-radius:6px}
-  .sticker-grid img{width:100%;aspect-ratio:1;cursor:pointer;border-radius:4px;transition:transform .2s;background:#3a2a1a;padding:2px}
-  .sticker-grid img:hover{transform:scale(1.15);background:var(--gold)}
-  .small-btn{padding:.4rem .8rem;font-size:.85rem;border:1px solid var(--gold);color:var(--cream);background:transparent;border-radius:6px;cursor:pointer;font-family:'Cormorant Garamond',serif}
+  .editor{background:#1f1610;padding:1.5rem;border-radius:12px;width:300px;max-width:100%;color:#d4b88a;box-shadow: 0 10px 30px rgba(0,0,0,0.3)}
+  .editor h3{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--cream-2);font-size:1.3rem;margin-bottom:.8rem;border-bottom:1px solid #3a2a1a;padding-bottom:.4rem}
+  .editor label{display:block;font-family:'Caveat',cursive;font-size:1.1rem;color:#d4b88a;margin:.8rem 0 .3rem}
+  .editor input[type=text],.editor textarea,.editor select{width:100%;padding:.6rem;background:#2a1f15;border:1px solid #3a2a1a;color:var(--cream);border-radius:8px;font-family:inherit;font-size:.95rem}
+  .editor textarea{resize:vertical;min-height:60px}
+  .editor input[type=range]{width:100%;accent-color: var(--gold)}
+  .editor input[type=color]{width:50px;height:35px;border:none;background:transparent;cursor:pointer;padding:0}
+  .row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+  .sticker-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.4rem;margin-top:.5rem;max-height:160px;overflow-y:auto;padding:.5rem;background:#2a1f15;border-radius:8px}
+  .sticker-grid img{width:100%;aspect-ratio:1;cursor:pointer;border-radius:6px;transition:transform 0.2s;background:#3a2a1a;padding:4px}
+  .sticker-grid img:hover{transform:scale(1.2);background:var(--gold)}
+  .small-btn{padding:.5rem 1rem;font-size:.9rem;border:1px solid var(--gold);color:var(--cream);background:transparent;border-radius:8px;cursor:pointer;font-family:'Cormorant Garamond',serif;transition: all 0.2s}
   .small-btn:hover{background:var(--gold);color:#1f1610}
 
-  footer{padding:2rem;text-align:center;color:var(--sepia-soft);font-family:'Caveat',cursive;font-size:1.2rem;background:var(--cream)}
+  footer{padding:3rem;text-align:center;color:var(--sepia-soft);font-family:'Caveat',cursive;font-size:1.3rem;background:var(--cream)}
 
   /* ============ RESPONSIVE ============ */
-  @media (max-width: 768px){
-    section{padding:3.5rem 1rem;min-height:auto}
-    #opening{min-height:100vh}
-    #opening h1{font-size:2.4rem}
-    #opening p{font-size:1rem;padding:0 .5rem}
-    .btn{padding:.75rem 1.6rem;font-size:.95rem}
-    .envelope-stage{width:92vw;height:260px;margin-bottom:2rem}
-    .seal{width:50px;height:50px;font-size:1.3rem}
-    .letter-paper{font-size:.95rem;padding:1rem}
-    .paper{padding:2rem 1.25rem;width:94vw}
-    .paper h2{font-size:1.4rem}
-    .paper p{font-size:1.2rem}
-    .sign{font-size:1.4rem}
-    .letter-modal{padding:1rem}
-    .letter-modal .close{top:.75rem;right:.75rem;width:38px;height:38px}
-    #gallery h2,#booth h2{font-size:1.8rem}
-    #gallery .sub,#booth .sub{font-size:1.1rem}
-    .polaroids{gap:1rem}
-    .polaroid{width:160px;padding:10px 10px 36px}
-    .polaroid .cap{font-size:1rem;bottom:10px}
-    #final h2{font-size:1.7rem;padding:0 .5rem}
-    #final .quote{font-size:1.2rem}
-    #booth{padding:3rem 1rem}
-    .booth-wrap{gap:1.25rem}
-    .camera{width:100%;padding:.75rem}
-    .editor{width:100%}
-    .controls,.layouts,.mode-tabs{gap:.35rem}
-    .ctrl-btn{padding:.5rem .9rem;font-size:.85rem}
-    .countdown{font-size:5rem}
-    .bg-picker{max-width:100%}
-    .bg-swatch{width:36px;height:36px}
-    .sticker-grid{grid-template-columns:repeat(5,1fr);max-height:120px}
-    .strip-outer{padding:18px 14px}
-    .strip{width:180px}
-    footer{font-size:1rem;padding:1.5rem 1rem}
+  @media (max-width: 900px){
+    .booth-wrap{flex-direction: column; align-items: center; gap: 2rem;}
+    .camera, .editor { width: 100%; max-width: 440px; }
   }
-  @media (max-width: 380px){
-    #opening h1{font-size:2rem}
-    .envelope-stage{height:230px}
-    .polaroid{width:140px}
-    .strip{width:160px}
-    .sticker-grid{grid-template-columns:repeat(4,1fr)}
+  @media (max-width: 600px){
+    section{padding:3rem 1rem}
+    #opening h1{font-size:2.8rem}
+    .paper{padding:2rem 1.5rem}
+    .strip-outer{width: 200px; padding: 15px 10px 30px;}
+    .strip{gap: 8px;}
   }
 
-  /* ===== Floating Music FAB + Polaroid Popup ===== */
+  /* Music FAB Styles */
   #musicFab{position:fixed;bottom:20px;right:20px;z-index:200;display:flex;align-items:center;gap:10px;background:rgba(255,250,240,.95);backdrop-filter:blur(8px);padding:8px 14px 8px 8px;border:1px solid rgba(201,169,110,.4);border-radius:999px;box-shadow:0 8px 24px rgba(107,74,43,.25);font-family:'Caveat',cursive;color:var(--sepia);cursor:pointer;transition:transform .25s, box-shadow .25s}
   #musicFab:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(107,74,43,.32)}
   #musicFab .fab-icon{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#d98a8a,#b85a5a);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 4px 10px rgba(184,90,90,.35)}
@@ -292,12 +225,8 @@
   .washi-left{left:14px;transform:rotate(-10deg);background:repeating-linear-gradient(135deg,rgba(255,255,255,.5) 0 4px,transparent 4px 8px),#b6d4d0}
   .washi-right{right:14px;transform:rotate(8deg);background:repeating-linear-gradient(135deg,rgba(255,255,255,.5) 0 4px,transparent 4px 8px),#d8c5a3}
   .music-cover{width:100%;aspect-ratio:1/1;overflow:hidden;border-radius:50%;margin:10px auto 20px;background:#eaf3f4;position:relative;box-shadow:0 0 0 8px rgba(58,42,26,0.05), 0 10px 20px rgba(0,0,0,0.1);transition:transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
-  .music-cover::after{content:'';position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 40px rgba(0,0,0,0.1);pointer-events:none}
   .music-cover.playing{animation:rotateDisc 8s linear infinite}
-  .music-cover svg{width:100%;height:100%;display:block;border-radius:50%}
   @keyframes rotateDisc{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-  
-  /* Progress bar */
   .music-progress-container{width:100%;height:4px;background:rgba(58,42,26,0.1);border-radius:2px;margin-bottom:15px;cursor:pointer;position:relative}
   .music-progress{height:100%;background:var(--rose);border-radius:2px;width:0%;transition:width 0.1s linear}
   .music-time{display:flex;justify-content:space-between;font-size:10px;color:var(--sepia-soft);margin-top:4px;font-family:monospace}
@@ -307,14 +236,6 @@
   .m-btn:hover{transform:scale(1.12)}
   .m-btn.liked{color:#c97676}
   .m-close{position:absolute;top:-10px;right:-10px;background:#f6efe2;border:1px solid rgba(58,42,26,.15);color:#6b5b48;width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.12);transition:all .2s;z-index:2;font-size:14px;line-height:1}
-  .m-close:hover{color:#c97676;transform:scale(1.08)}
-  @media (max-width:480px){
-    #musicFab{bottom:12px;right:12px;padding:6px 12px 6px 6px;gap:8px}
-    #musicFab .fab-icon{width:34px;height:34px;font-size:1rem}
-    #musicFab .fab-label{font-size:.95rem;max-width:90px}
-    .music-card{max-width:240px;padding:14px 14px 18px}
-  }
-
 </style>
 </head>
 <body>
@@ -350,39 +271,22 @@
 <div class="letter-modal" id="letterModal" onclick="if(event.target===this)closeLetter()">
   <button class="close" onclick="closeLetter()">×</button>
   <div class="paper">
-   <h2>Hai, kamu.</h2>
-
-<p>Maaf ya kalau aku jadi jarang muncul belakangan ini, hehe.</p>
-
-<p>Bukan karena aku marah, bete, atau berubah. Aku cuma takut ganggu kamu, jadi sering milih diam daripada chat duluan.</p>
-
-<p>Ditambah akhir-akhir ini hariku juga cukup sibuk dan lumayan berat, jadi kadang aku tenggelam sama urusanku sendiri.</p>
-
-<p>Tapi tenang aja, jangan pernah anggap aku marah ya. Aku masih orang yang sama kok. Hehe ♡</p>
-
-<p class="sign">— Dariku</p>
+    <h2>Hai, kamu.</h2>
+    <p>Maaf ya kalau aku jadi jarang muncul belakangan ini, hehe.</p>
+    <p>Bukan karena aku marah, bete, atau berubah. Aku cuma takut ganggu kamu, jadi sering milih diam daripada chat duluan.</p>
+    <p>Ditambah akhir-akhir ini hariku juga cukup sibuk dan lumayan berat, jadi kadang aku tenggelam sama urusanku sendiri.</p>
+    <p>Tapi tenang aja, jangan pernah anggap aku marah ya. Aku masih orang yang sama kok. Hehe ♡</p>
+    <p class="sign">— Dariku</p>
   </div>
 </div>
 
 <section id="gallery">
   <h2>Hal-hal yang mengingatkanku padamu...</h2>
   <p class="sub">sebenernya pengen isi foto kamu di sini, tapi aku belum punya hehehe ♡</p>
-
   <div class="polaroids">
-    <div class="polaroid">
-      <div class="ph">🌷</div>
-      <div class="cap">hal-hal kecil yang bikin hari lebih baik</div>
-    </div>
-
-    <div class="polaroid">
-      <div class="ph">☁️</div>
-      <div class="cap">orang yang sering aku pikirin diam-diam</div>
-    </div>
-
-    <div class="polaroid">
-      <div class="ph">✨</div>
-      <div class="cap">semoga harinya selalu baik</div>
-    </div>
+    <div class="polaroid"><div class="ph">🌷</div><div class="cap">hal-hal kecil yang bikin hari lebih baik</div></div>
+    <div class="polaroid"><div class="ph">☁️</div><div class="cap">orang yang sering aku pikirin diam-diam</div></div>
+    <div class="polaroid"><div class="ph">✨</div><div class="cap">semoga harinya selalu baik</div></div>
   </div>
 </section>
 
@@ -424,7 +328,7 @@
 
       <div id="upMode" class="hidden">
         <p style="font-family:'Caveat',cursive;color:#d4b88a;margin-bottom:.6rem">Pilih foto dari galerimu</p>
-        <input type="file" id="fileInput" accept="image/*" multiple onchange="handleUpload(event)" style="color:#d4b88a">
+        <input type="file" id="fileInput" accept="image/*" multiple onchange="handleUpload(event)" style="display:none">
         <div class="controls">
           <button class="ctrl-btn" onclick="document.getElementById('fileInput').click()">Pilih Foto</button>
           <button class="ctrl-btn" onclick="clearStrip()">Hapus Semua</button>
@@ -433,13 +337,13 @@
       </div>
 
       <div class="controls" style="margin-top:1.2rem">
-        <button class="ctrl-btn" onclick="downloadStrip()">⬇ Unduh Strip</button>
+        <button class="ctrl-btn" onclick="downloadStrip()" style="background:var(--gold); color:#1f1610; font-weight:bold">⬇ Unduh Strip</button>
       </div>
     </div>
 
     <!-- MIDDLE: strip -->
-    <div>
-      <p style="font-family:'Caveat',cursive;color:#d4b88a;margin-bottom:.6rem;text-align:center">Pilih background strip</p>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <p style="font-family:'Caveat',cursive;color:#d4b88a;margin-bottom:.8rem;text-align:center">Pilih background strip</p>
       <div class="bg-picker" id="bgPicker">
         <div class="bg-swatch active" data-bg="bg-classic" style="background:#fffaf0" title="Klasik"></div>
         <div class="bg-swatch" data-bg="bg-noir" style="background:#0a0a0a" title="Noir"></div>
@@ -464,7 +368,6 @@
       <h3>✎ Edit Teks Footer</h3>
       <label>Teks</label>
       <textarea id="footerText" oninput="updateFooter()">untuk kita ♡ 2026</textarea>
-
       <label>Font</label>
       <select id="footerFont" onchange="updateFooter()">
         <option value="'Caveat', cursive">Caveat</option>
@@ -477,7 +380,6 @@
         <option value="'Cormorant Garamond', serif">Cormorant (italic)</option>
         <option value="'Quicksand', sans-serif">Quicksand</option>
       </select>
-
       <div class="row" style="margin-top:.5rem">
         <div style="flex:1">
           <label>Ukuran: <span id="sizeVal">16</span>px</label>
@@ -488,7 +390,6 @@
           <input type="color" id="footerColor" value="#6b4a2b" oninput="updateFooter()">
         </div>
       </div>
-
       <h3 style="margin-top:1rem">✦ Stiker</h3>
       <p style="font-family:'Caveat',cursive;font-size:.9rem;color:#a8896a">klik stiker → muncul di strip. Drag pindah, pojok kanan-bawah untuk resize, × hapus.</p>
       <div class="sticker-grid" id="stickerGrid"></div>
@@ -504,188 +405,41 @@
 <footer>terima kasih banyak ♡</footer>
 
 <!-- Floating Music FAB -->
-<button id="musicFab" type="button" title="Buka pemutar musik" aria-label="Buka pemutar musik">
+<button id="musicFab" type="button" title="Buka pemutar musik">
   <span class="fab-icon" id="fabIcon">♪</span>
   <span class="fab-label" id="fabLabel">putar musik</span>
 </button>
 
 <!-- Music Popup -->
 <div class="music-overlay" id="musicOverlay" aria-hidden="true">
-  <div class="music-card" role="dialog" aria-label="Pemutar musik">
-    <button class="m-close" id="mClose" aria-label="Tutup">✕</button>
+  <div class="music-card">
+    <button class="m-close" id="mClose">✕</button>
     <span class="washi washi-left"></span>
     <span class="washi washi-right"></span>
-
     <div class="music-cover" id="musicCover">
       <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#f3faf8"/>
-            <stop offset="60%" stop-color="#cfe6e2"/>
-            <stop offset="100%" stop-color="#9bc4bd"/>
-          </linearGradient>
-        </defs>
-        <rect width="200" height="260" fill="url(#sky)"/>
-        <g fill="#7aa89f" opacity=".55">
-          <ellipse cx="40" cy="225" rx="55" ry="22"/>
-          <ellipse cx="150" cy="232" rx="65" ry="24"/>
-          <ellipse cx="100" cy="250" rx="90" ry="20"/>
-        </g>
-        <g transform="translate(35,170) scale(1)"><circle r="4" fill="#f5b733"/><g fill="#fff"><ellipse cx="0" cy="-10" rx="3.5" ry="7"/><ellipse cx="0" cy="10" rx="3.5" ry="7"/><ellipse cx="10" cy="0" rx="7" ry="3.5"/><ellipse cx="-10" cy="0" rx="7" ry="3.5"/><ellipse cx="7" cy="-7" rx="4" ry="6" transform="rotate(45 7 -7)"/><ellipse cx="-7" cy="-7" rx="4" ry="6" transform="rotate(-45 -7 -7)"/><ellipse cx="7" cy="7" rx="4" ry="6" transform="rotate(-45 7 7)"/><ellipse cx="-7" cy="7" rx="4" ry="6" transform="rotate(45 -7 7)"/></g></g><g transform="translate(85,160) scale(1.1)"><circle r="4" fill="#f5b733"/><g fill="#fff"><ellipse cx="0" cy="-10" rx="3.5" ry="7"/><ellipse cx="0" cy="10" rx="3.5" ry="7"/><ellipse cx="10" cy="0" rx="7" ry="3.5"/><ellipse cx="-10" cy="0" rx="7" ry="3.5"/><ellipse cx="7" cy="-7" rx="4" ry="6" transform="rotate(45 7 -7)"/><ellipse cx="-7" cy="-7" rx="4" ry="6" transform="rotate(-45 -7 -7)"/><ellipse cx="7" cy="7" rx="4" ry="6" transform="rotate(-45 7 7)"/><ellipse cx="-7" cy="7" rx="4" ry="6" transform="rotate(45 -7 7)"/></g></g><g transform="translate(150,175) scale(0.95)"><circle r="4" fill="#f5b733"/><g fill="#fff"><ellipse cx="0" cy="-10" rx="3.5" ry="7"/><ellipse cx="0" cy="10" rx="3.5" ry="7"/><ellipse cx="10" cy="0" rx="7" ry="3.5"/><ellipse cx="-10" cy="0" rx="7" ry="3.5"/><ellipse cx="7" cy="-7" rx="4" ry="6" transform="rotate(45 7 -7)"/><ellipse cx="-7" cy="-7" rx="4" ry="6" transform="rotate(-45 -7 -7)"/><ellipse cx="7" cy="7" rx="4" ry="6" transform="rotate(-45 7 7)"/><ellipse cx="-7" cy="7" rx="4" ry="6" transform="rotate(45 -7 7)"/></g></g><g transform="translate(60,210) scale(1.2)"><circle r="4" fill="#f5b733"/><g fill="#fff"><ellipse cx="0" cy="-10" rx="3.5" ry="7"/><ellipse cx="0" cy="10" rx="3.5" ry="7"/><ellipse cx="10" cy="0" rx="7" ry="3.5"/><ellipse cx="-10" cy="0" rx="7" ry="3.5"/><ellipse cx="7" cy="-7" rx="4" ry="6" transform="rotate(45 7 -7)"/><ellipse cx="-7" cy="-7" rx="4" ry="6" transform="rotate(-45 -7 -7)"/><ellipse cx="7" cy="7" rx="4" ry="6" transform="rotate(-45 7 7)"/><ellipse cx="-7" cy="7" rx="4" ry="6" transform="rotate(45 -7 7)"/></g></g><g transform="translate(125,215) scale(1.15)"><circle r="4" fill="#f5b733"/><g fill="#fff"><ellipse cx="0" cy="-10" rx="3.5" ry="7"/><ellipse cx="0" cy="10" rx="3.5" ry="7"/><ellipse cx="10" cy="0" rx="7" ry="3.5"/><ellipse cx="-10" cy="0" rx="7" ry="3.5"/><ellipse cx="7" cy="-7" rx="4" ry="6" transform="rotate(45 7 -7)"/><ellipse cx="-7" cy="-7" rx="4" ry="6" transform="rotate(-45 -7 -7)"/><ellipse cx="7" cy="7" rx="4" ry="6" transform="rotate(-45 7 7)"/><ellipse cx="-7" cy="7" rx="4" ry="6" transform="rotate(45 -7 7)"/></g></g><g transform="translate(100,185) scale(1)"><circle r="4" fill="#f5b733"/><g fill="#fff"><ellipse cx="0" cy="-10" rx="3.5" ry="7"/><ellipse cx="0" cy="10" rx="3.5" ry="7"/><ellipse cx="10" cy="0" rx="7" ry="3.5"/><ellipse cx="-10" cy="0" rx="7" ry="3.5"/><ellipse cx="7" cy="-7" rx="4" ry="6" transform="rotate(45 7 -7)"/><ellipse cx="-7" cy="-7" rx="4" ry="6" transform="rotate(-45 -7 -7)"/><ellipse cx="7" cy="7" rx="4" ry="6" transform="rotate(-45 7 7)"/><ellipse cx="-7" cy="7" rx="4" ry="6" transform="rotate(45 -7 7)"/></g></g><g transform="translate(170,200) scale(0.9)"><circle r="4" fill="#f5b733"/><g fill="#fff"><ellipse cx="0" cy="-10" rx="3.5" ry="7"/><ellipse cx="0" cy="10" rx="3.5" ry="7"/><ellipse cx="10" cy="0" rx="7" ry="3.5"/><ellipse cx="-10" cy="0" rx="7" ry="3.5"/><ellipse cx="7" cy="-7" rx="4" ry="6" transform="rotate(45 7 -7)"/><ellipse cx="-7" cy="-7" rx="4" ry="6" transform="rotate(-45 -7 -7)"/><ellipse cx="7" cy="7" rx="4" ry="6" transform="rotate(-45 7 7)"/><ellipse cx="-7" cy="7" rx="4" ry="6" transform="rotate(45 -7 7)"/></g></g><g transform="translate(20,200) scale(1.05)"><circle r="4" fill="#f5b733"/><g fill="#fff"><ellipse cx="0" cy="-10" rx="3.5" ry="7"/><ellipse cx="0" cy="10" rx="3.5" ry="7"/><ellipse cx="10" cy="0" rx="7" ry="3.5"/><ellipse cx="-10" cy="0" rx="7" ry="3.5"/><ellipse cx="7" cy="-7" rx="4" ry="6" transform="rotate(45 7 -7)"/><ellipse cx="-7" cy="-7" rx="4" ry="6" transform="rotate(-45 -7 -7)"/><ellipse cx="7" cy="7" rx="4" ry="6" transform="rotate(-45 7 7)"/><ellipse cx="-7" cy="7" rx="4" ry="6" transform="rotate(45 -7 7)"/></g></g><g transform="translate(110,230) scale(1.1)"><circle r="4" fill="#f5b733"/><g fill="#fff"><ellipse cx="0" cy="-10" rx="3.5" ry="7"/><ellipse cx="0" cy="10" rx="3.5" ry="7"/><ellipse cx="10" cy="0" rx="7" ry="3.5"/><ellipse cx="-10" cy="0" rx="7" ry="3.5"/><ellipse cx="7" cy="-7" rx="4" ry="6" transform="rotate(45 7 -7)"/><ellipse cx="-7" cy="-7" rx="4" ry="6" transform="rotate(-45 -7 -7)"/><ellipse cx="7" cy="7" rx="4" ry="6" transform="rotate(-45 7 7)"/><ellipse cx="-7" cy="7" rx="4" ry="6" transform="rotate(45 -7 7)"/></g></g><g transform="translate(160,235) scale(1)"><circle r="4" fill="#f5b733"/><g fill="#fff"><ellipse cx="0" cy="-10" rx="3.5" ry="7"/><ellipse cx="0" cy="10" rx="3.5" ry="7"/><ellipse cx="10" cy="0" rx="7" ry="3.5"/><ellipse cx="-10" cy="0" rx="7" ry="3.5"/><ellipse cx="7" cy="-7" rx="4" ry="6" transform="rotate(45 7 -7)"/><ellipse cx="-7" cy="-7" rx="4" ry="6" transform="rotate(-45 -7 -7)"/><ellipse cx="7" cy="7" rx="4" ry="6" transform="rotate(-45 7 7)"/><ellipse cx="-7" cy="7" rx="4" ry="6" transform="rotate(45 -7 7)"/></g></g>
+        <rect width="200" height="200" fill="#cfe6e2"/>
+        <circle cx="100" cy="100" r="40" fill="#7aa89f" opacity="0.5"/>
       </svg>
     </div>
-
     <div class="music-row">
-      <button class="m-btn" id="mLike" aria-label="Suka">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <button class="m-btn" id="mLike">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
       </button>
-      <!-- Tombol tambah musik dihapus sesuai permintaan -->
     </div>
-
     <div class="music-progress-container" id="progressContainer">
       <div class="music-progress" id="musicProgress"></div>
-      <div class="music-time">
-        <span id="currentTime">0:00</span>
-        <span id="duration">0:00</span>
-      </div>
+      <div class="music-time"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
     </div>
-
     <div class="music-controls">
-      <button class="m-btn" id="mPrev" aria-label="Sebelumnya">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
-      </button>
-      <button class="m-btn" id="mPlay" aria-label="Putar" style="background:var(--rose);color:white;width:50px;height:50px;box-shadow:0 4px 12px rgba(217,138,138,0.4)">
-        <svg id="mPlayIcon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-      </button>
-      <button class="m-btn" id="mNext" aria-label="Berikutnya">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
-      </button>
+      <button class="m-btn" id="mPrev"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
+      <button class="m-btn" id="mPlay" style="background:var(--rose);color:white;width:50px;height:50px;border-radius:50%"><svg id="mPlayIcon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+      <button class="m-btn" id="mNext"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
     </div>
   </div>
 </div>
 <audio id="bgAudio" loop></audio>
 
-<script>
-(function(){
-  const audio = document.getElementById('bgAudio');
-  const fab = document.getElementById('musicFab');
-  const fabIcon = document.getElementById('fabIcon');
-  const fabLabel = document.getElementById('fabLabel');
-  const overlay = document.getElementById('musicOverlay');
-  const closeBtn = document.getElementById('mClose');
-  const playBtn = document.getElementById('mPlay');
-  const playIcon = document.getElementById('mPlayIcon');
-  const likeBtn = document.getElementById('mLike');
-  const prevBtn = document.getElementById('mPrev');
-  const nextBtn = document.getElementById('mNext');
-  const cover = document.getElementById('musicCover');
-  const progress = document.getElementById('musicProgress');
-  const progressContainer = document.getElementById('progressContainer');
-  const currTimeEl = document.getElementById('currentTime');
-  const durTimeEl = document.getElementById('duration');
-
-  // Efek suara klik (Base64)
-  const clickSound = new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFRm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YT9vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT19vT18=');
-  function playClick() {
-    clickSound.currentTime = 0;
-    clickSound.play().catch(() => {});
-  }
-
-  const PLAY_PATH = '<path d="M8 5v14l11-7z"/>';
-  const PAUSE_PATH = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
-
-  function setPlayingUI(playing){
-    playIcon.innerHTML = playing ? PAUSE_PATH : PLAY_PATH;
-    fabIcon.textContent = playing ? '♬' : '♪';
-    fabLabel.textContent = playing ? 'sedang diputar…' : 'putar musik';
-    if(playing) cover.classList.add('playing');
-    else cover.classList.remove('playing');
-  }
-
-  function updateProgress(e){
-    const {duration, currentTime} = e.srcElement;
-    const progressPercent = (currentTime / duration) * 100;
-    progress.style.width = `${progressPercent}%`;
-    
-    // Update time display
-    currTimeEl.textContent = formatTime(currentTime);
-    if(duration) durTimeEl.textContent = formatTime(duration);
-  }
-
-  function setProgress(e){
-    const width = this.clientWidth;
-    const clickX = e.offsetX;
-    const duration = audio.duration;
-    if(duration) audio.currentTime = (clickX / width) * duration;
-  }
-
-  function formatTime(time){
-    if(isNaN(time)) return "0:00";
-    const min = Math.floor(time / 60);
-    const sec = Math.floor(time % 60);
-    return `${min}:${sec < 10 ? '0'+sec : sec}`;
-  }
-
-  function openPopup(){ 
-    overlay.classList.add('open'); 
-    overlay.setAttribute('aria-hidden','false'); 
-    // Trigger metadata load to get duration
-    if(audio.src) audio.load();
-  }
-  function closePopup(){ overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true'); }
-
-  fab.addEventListener('click', () => { playClick(); openPopup(); });
-  closeBtn.addEventListener('click', () => { playClick(); closePopup(); });
-  overlay.addEventListener('click', e => { if(e.target === overlay) closePopup(); });
-  document.addEventListener('keydown', e => { if(e.key === 'Escape') closePopup(); });
-
-  // Logic upload dihapus
-
-  // Set default source
-  if(!audio.src || audio.src.includes('undefined')) {
-    audio.src = 'instrumental.mp3';
-  }
-
-  playBtn.addEventListener('click', ()=>{
-    playClick();
-    if(audio.paused){ 
-      audio.play().then(()=> setPlayingUI(true)).catch((err)=>{
-        console.error("Playback error:", err);
-        // Fallback jika file tidak ditemukan
-        alert("Pastikan file 'instrumental.mp3' ada di folder yang sama.");
-      }); 
-    }
-    else { audio.pause(); setPlayingUI(false); }
-  });
-
-  audio.addEventListener('timeupdate', updateProgress);
-  progressContainer.addEventListener('click', setProgress);
-
-  likeBtn.addEventListener('click', ()=> {
-    playClick();
-    likeBtn.classList.toggle('liked');
-  });
-
-  // Placeholder untuk ganti lagu (bisa diisi daftar lagu nantinya)
-  prevBtn.addEventListener('click', () => {
-    playClick();
-    console.log("Lagu sebelumnya dipicu");
-    // Anda bisa menambahkan logika ganti lagu di sini nanti
-  });
-
-  nextBtn.addEventListener('click', () => {
-    playClick();
-    console.log("Lagu berikutnya dipicu");
-    // Anda bisa menambahkan logika ganti lagu di sini nanti
-  });
-
-  audio.addEventListener('ended', ()=> setPlayingUI(false));
-  audio.addEventListener('pause', ()=> setPlayingUI(false));
-  audio.addEventListener('play', ()=> setPlayingUI(true));
-})();
-</script>
-
-<!-- html2canvas for export with stickers + custom fonts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 /* sparkles */
@@ -718,7 +472,6 @@ let cuts=3, mode='cam', stream=null, photos=[];
 
 function buildStrip(){
   const strip=document.getElementById('strip');
-  // preserve existing stickers & footer
   const stickers=[...strip.querySelectorAll('.sticker')];
   const footer=document.getElementById('stripFooter');
   strip.innerHTML='';
@@ -757,10 +510,10 @@ async function startCam(){
 function snap(){
   const v=document.getElementById('video');
   const c=document.createElement('canvas');
-  c.width=v.videoWidth;c.height=v.videoHeight;
+  c.width=800; c.height=600;
   const ctx=c.getContext('2d');
   ctx.translate(c.width,0);ctx.scale(-1,1);
-  ctx.drawImage(v,0,0);
+  ctx.drawImage(v,0,0,c.width,c.height);
   return c.toDataURL('image/jpeg',.9);
 }
 function flash(){
@@ -771,8 +524,8 @@ function flash(){
 async function startSnap(){
   if(!stream){alert('Nyalakan kamera dulu');return;}
   document.getElementById('snapBtn').disabled=true;
-  photos=[];buildStrip();
   const cd=document.getElementById('countdown');
+  photos=[];buildStrip();
   for(let i=0;i<cuts;i++){
     for(let n=3;n>0;n--){cd.textContent=n;await wait(800);}
     cd.textContent='';
@@ -847,16 +600,12 @@ function updateFooter(){
 }
 
 /* ===== STICKERS ===== */
-/* Preset stickers using Twemoji CDN (PNG, CORS-friendly) */
 const TWEMOJI='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/';
 const STICKER_EMOJIS=[
-  '2764','1f495','1f496','1f497','1f49e','1f48c', // hearts
-  '1f338','1f33a','1f339','1f337','1f33b','1f490', // flowers
-  '2728','1f31f','2b50','1f4ab','1f308','2604',    // sparkles/star
-  '1f436','1f431','1f43c','1f430','1f98b','1f426', // animals
-  '2615','1f370','1f382','1f9c1','1f366','1f368', // coffee/cake
-  '1f3b5','1f3b6','1f4f8','1f3a8','1f48d','1f3a0', // misc
-  '1f60a','1f970','1f618','1f60d','1f917','1f973'  // faces
+  '2764','1f495','1f496','1f497','1f49e','1f48c', '1f338','1f33a','1f339','1f337','1f33b','1f490',
+  '2728','1f31f','2b50','1f4ab','1f308','2604', '1f436','1f431','1f43c','1f430','1f98b','1f426',
+  '2615','1f370','1f382','1f9c1','1f366','1f368', '1f3b5','1f3b6','1f4f8','1f3a8','1f48d','1f3a0',
+  '1f60a','1f970','1f618','1f60d','1f917','1f973'
 ];
 function buildStickerGrid(){
   const g=document.getElementById('stickerGrid');
@@ -864,11 +613,7 @@ function buildStickerGrid(){
     const img=document.createElement('img');
     img.src=TWEMOJI+code+'.png';
     img.crossOrigin='anonymous';
-    img.title='Tambah stiker';
-    img.onclick=()=>{
-      if(typeof playClick === 'function') playClick();
-      addSticker(img.src);
-    };
+    img.onclick=()=>addSticker(img.src);
     g.appendChild(img);
   });
 }
@@ -933,29 +678,67 @@ function makeInteractive(el,resizeHandle){
   el.addEventListener('pointerdown',e=>down(e,'move'));
   resizeHandle.addEventListener('pointerdown',e=>down(e,'resize'));
 }
-document.addEventListener('click',e=>{
-  if(!e.target.closest('.sticker')) document.querySelectorAll('.sticker.selected').forEach(s=>s.classList.remove('selected'));
-});
 
 /* ===== DOWNLOAD via html2canvas ===== */
 async function downloadStrip(){
-  // deselect stickers first so outline doesn't render
   document.querySelectorAll('.sticker.selected').forEach(s=>s.classList.remove('selected'));
   const node=document.getElementById('stripOuter');
   try{
-    const canvas=await html2canvas(node,{
-      useCORS:true, allowTaint:true, backgroundColor:null, scale:2
-    });
+    const canvas=await html2canvas(node,{useCORS:true, allowTaint:true, backgroundColor:null, scale:3});
     const a=document.createElement('a');
     a.download='photobooth-kenangan.png';
     a.href=canvas.toDataURL('image/png');
     a.click();
-  }catch(err){
-    alert('Gagal export: '+err.message);
-  }
+  }catch(err){alert('Gagal export: '+err.message);}
 }
 
-/* init */
+/* Music Logic */
+(function(){
+  const audio = document.getElementById('bgAudio');
+  const fab = document.getElementById('musicFab');
+  const overlay = document.getElementById('musicOverlay');
+  const closeBtn = document.getElementById('mClose');
+  const playBtn = document.getElementById('mPlay');
+  const playIcon = document.getElementById('mPlayIcon');
+  const progress = document.getElementById('musicProgress');
+  const progressContainer = document.getElementById('progressContainer');
+  const currTimeEl = document.getElementById('currentTime');
+  const durTimeEl = document.getElementById('duration');
+
+  audio.src = 'instrumental.mp3';
+
+  function setPlayingUI(playing){
+    playIcon.innerHTML = playing ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>' : '<path d="M8 5v14l11-7z"/>';
+    document.getElementById('musicCover').classList.toggle('playing', playing);
+  }
+
+  fab.addEventListener('click', () => overlay.classList.add('open'));
+  closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.addEventListener('click', e => { if(e.target === overlay) overlay.classList.remove('open'); });
+
+  playBtn.addEventListener('click', ()=>{
+    if(audio.paused) audio.play().then(()=> setPlayingUI(true));
+    else { audio.pause(); setPlayingUI(false); }
+  });
+
+  audio.addEventListener('timeupdate', ()=>{
+    const progressPercent = (audio.currentTime / audio.duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+    currTimeEl.textContent = formatTime(audio.currentTime);
+    if(audio.duration) durTimeEl.textContent = formatTime(audio.duration);
+  });
+
+  progressContainer.addEventListener('click', (e)=>{
+    audio.currentTime = (e.offsetX / progressContainer.clientWidth) * audio.duration;
+  });
+
+  function formatTime(time){
+    const min = Math.floor(time / 60);
+    const sec = Math.floor(time % 60);
+    return `${min}:${sec < 10 ? '0'+sec : sec}`;
+  }
+})();
+
 buildStrip();
 updateFooter();
 </script>
