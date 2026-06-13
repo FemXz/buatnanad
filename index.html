@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Untukmu — Sebuah Permintaan Maaf</title>
+<title>Untukmu — My Favorite person</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Quicksand:wght@400;500&family=Pacifico&family=Dancing+Script:wght@400;700&family=Permanent+Marker&family=Shadows+Into+Light&family=Indie+Flower&family=Sacramento&display=swap" rel="stylesheet">
@@ -35,9 +35,10 @@
   #letter h2.section-title{font-size:2.2rem;font-style:italic;color:var(--sepia);margin-bottom:.5rem}
   #letter .sub{color:var(--sepia-soft);margin-bottom:2.5rem;font-family:'Caveat',cursive;font-size:1.4rem}
 
-  .envelope-stage{position:relative;width:min(440px,92vw);height:340px;perspective:1400px;margin-bottom:1.5rem}
+  /* Envelope Sizing - More compact for aesthetic feel */
+  .envelope-stage{position:relative;width:min(400px,85vw);height:280px;perspective:1400px;margin-bottom:1.5rem}
   .envelope{position:absolute;inset:0;cursor:pointer;transition:transform 1.2s cubic-bezier(.7,.05,.3,1)}
-  .envelope.opened{transform:translateY(40px) scale(.95)}
+  .envelope.opened{transform:translateY(30px) scale(.95)}
   .env-body{position:absolute;inset:0;background:linear-gradient(160deg,#e8b8b8,#c97676);border-radius:6px;box-shadow:0 25px 50px -15px rgba(107,42,42,.55), inset 0 0 40px rgba(0,0,0,.08)}
   .env-front{position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(180deg,#d88c8c,#b85a5a);border-radius:0 0 6px 6px;z-index:4;box-shadow:inset 0 8px 16px rgba(0,0,0,.12)}
   .env-front::before,.env-front::after{content:'';position:absolute;top:0;width:55%;height:100%;background:linear-gradient(180deg,#c97676,#a85050)}
@@ -45,28 +46,28 @@
   .env-front::after{right:0;clip-path:polygon(0 0,100% 0,100% 100%)}
   .env-flap{position:absolute;top:0;left:0;right:0;height:62%;background:linear-gradient(180deg,#d88c8c,#b85a5a);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform 1s ease;z-index:6;box-shadow:0 2px 6px rgba(0,0,0,.15)}
   .envelope.opened .env-flap{transform:rotateX(180deg);z-index:1}
-  .seal{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e07878,#8a1f1f 70%);box-shadow:0 4px 10px rgba(0,0,0,.35), inset 0 -4px 8px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:#fff5e0;font-size:1.6rem;z-index:7;transition:opacity .4s, transform .4s}
+  .seal{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e07878,#8a1f1f 70%);box-shadow:0 4px 10px rgba(0,0,0,.35), inset 0 -4px 8px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:#fff5e0;font-size:1.4rem;z-index:7;transition:opacity .4s, transform .4s}
   .envelope.opened .seal{opacity:0;transform:translate(-50%,-50%) scale(.5)}
-  .letter-paper{position:absolute;left:6%;right:6%;top:8%;bottom:14%;background:#fffaf0;border-radius:3px;box-shadow:0 8px 20px rgba(0,0,0,.15);z-index:3;padding:1.5rem;text-align:left;font-family:'Caveat',cursive;color:var(--ink);font-size:1.1rem;line-height:1.4;overflow:hidden;transition:transform 1.2s cubic-bezier(.7,.05,.3,1) .3s, opacity .6s ease .3s;opacity:0}
-  .envelope.opened .letter-paper{transform:translateY(-90%);opacity:1}
+  .letter-paper{position:absolute;left:6%;right:6%;top:8%;bottom:14%;background:#fffaf0;border-radius:3px;box-shadow:0 8px 20px rgba(0,0,0,.15);z-index:3;padding:1.2rem;text-align:left;font-family:'Caveat',cursive;color:var(--ink);font-size:1rem;line-height:1.3;overflow:hidden;transition:transform 1.2s cubic-bezier(.7,.05,.3,1) .3s, opacity .6s ease .3s;opacity:0}
+  .envelope.opened .letter-paper{transform:translateY(-85%);opacity:1}
   .letter-paper .peek{color:var(--sepia-soft);font-style:italic}
-  .env-hint{position:absolute;left:50%;bottom:-2.4rem;transform:translateX(-50%);font-family:'Caveat',cursive;color:var(--sepia-soft);font-size:1.2rem;white-space:nowrap}
+  .env-hint{position:absolute;left:50%;bottom:-2.4rem;transform:translateX(-50%);font-family:'Caveat',cursive;color:var(--sepia-soft);font-size:1.1rem;white-space:nowrap}
   .envelope.opened + .env-hint{opacity:0;transition:opacity .3s}
 
-  .paper{max-width:640px;width:92vw;background:#fffaf0;padding:3rem 2.5rem;border-radius:4px;box-shadow:0 25px 60px -20px rgba(107,74,43,.45),inset 0 0 80px rgba(201,169,110,.08);position:relative;text-align:left;background-image:repeating-linear-gradient(transparent,transparent 31px,rgba(201,169,110,.18) 32px)}
-  .paper::before,.paper::after{content:'';position:absolute;width:120px;height:24px;background:rgba(217,138,138,.5);top:-10px;transform:rotate(-4deg);box-shadow:0 4px 10px rgba(0,0,0,.08)}
-  .paper::before{left:-10px}
-  .paper::after{right:-10px;transform:rotate(5deg);background:rgba(201,169,110,.5)}
-  .paper h2{font-style:italic;color:var(--sepia);margin-bottom:1.2rem;font-size:1.8rem;font-family:'Cormorant Garamond',serif}
-  .paper p{font-family:'Caveat',cursive;font-size:1.5rem;line-height:1.6;color:var(--ink);margin-bottom:1rem}
-  .sign{text-align:right;font-family:'Caveat',cursive;font-size:1.7rem;color:var(--rose);margin-top:1.2rem}
+  .paper{max-width:540px;width:88vw;background:#fffaf0;padding:2.5rem 2rem;border-radius:4px;box-shadow:0 25px 60px -20px rgba(107,74,43,.45),inset 0 0 80px rgba(201,169,110,.08);position:relative;text-align:left;background-image:repeating-linear-gradient(transparent,transparent 31px,rgba(201,169,110,.18) 32px)}
+  .paper::before,.paper::after{content:'';position:absolute;width:100px;height:20px;background:rgba(217,138,138,.5);top:-8px;transform:rotate(-4deg);box-shadow:0 4px 10px rgba(0,0,0,.08)}
+  .paper::before{left:-8px}
+  .paper::after{right:-8px;transform:rotate(5deg);background:rgba(201,169,110,.5)}
+  .paper h2{font-style:italic;color:var(--sepia);margin-bottom:1rem;font-size:1.6rem;font-family:'Cormorant Garamond',serif}
+  .paper p{font-family:'Caveat',cursive;font-size:1.35rem;line-height:1.5;color:var(--ink);margin-bottom:0.8rem}
+  .sign{text-align:right;font-family:'Caveat',cursive;font-size:1.5rem;color:var(--rose);margin-top:1rem}
 
-  .letter-modal{position:fixed;inset:0;background:rgba(58,42,26,.78);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:100;padding:2rem;animation:fadeIn .5s ease}
+  .letter-modal{position:fixed;inset:0;background:rgba(58,42,26,.78);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:100;padding:1.5rem;animation:fadeIn .5s ease}
   .letter-modal.show{display:flex}
-  .letter-modal .close{position:absolute;top:1.5rem;right:1.5rem;background:transparent;border:1px solid var(--cream);color:var(--cream);width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1.3rem}
+  .letter-modal .close{position:absolute;top:1rem;right:1rem;background:transparent;border:1px solid var(--cream);color:var(--cream);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.2rem}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   .letter-modal .paper{animation:letterRise .8s cubic-bezier(.2,.8,.3,1) both}
-  @keyframes letterRise{from{opacity:0;transform:translateY(60px) rotate(-2deg)}to{opacity:1;transform:none}}
+  @keyframes letterRise{from{opacity:0;transform:translateY(40px) rotate(-2deg)}to{opacity:1;transform:none}}
 
   #gallery{background:var(--cream-2);text-align:center}
   #gallery h2{font-size:2.3rem;font-style:italic;color:var(--sepia);margin-bottom:.5rem}
@@ -207,7 +208,11 @@
   @media (max-width: 600px){
     section{padding:3rem 1rem}
     #opening h1{font-size:2.8rem}
-    .paper{padding:2rem 1.5rem}
+    .envelope-stage{width:min(320px,90vw); height:220px;}
+    .envelope.opened{transform:translateY(20px) scale(.95)}
+    .paper{padding:1.8rem 1.2rem; width:92vw;}
+    .paper p{font-size:1.2rem; line-height:1.4;}
+    .paper h2{font-size:1.4rem;}
     .strip-outer{width: 200px; padding: 15px 10px 30px;}
     .strip{gap: 8px;}
   }
@@ -227,6 +232,7 @@
   .music-cover{width:100%;aspect-ratio:1/1;overflow:hidden;border-radius:50%;margin:10px auto 20px;background:#eaf3f4;position:relative;box-shadow:0 0 0 8px rgba(58,42,26,0.05), 0 10px 20px rgba(0,0,0,0.1);transition:transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
   .music-cover.playing{animation:rotateDisc 8s linear infinite}
   @keyframes rotateDisc{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  .music-cover img{width:100%;height:100%;object-fit:cover;border-radius:50%}
   .music-progress-container{width:100%;height:4px;background:rgba(58,42,26,0.1);border-radius:2px;margin-bottom:15px;cursor:pointer;position:relative}
   .music-progress{height:100%;background:var(--rose);border-radius:2px;width:0%;transition:width 0.1s linear}
   .music-time{display:flex;justify-content:space-between;font-size:10px;color:var(--sepia-soft);margin-top:4px;font-family:monospace}
@@ -282,12 +288,47 @@
 
 <section id="gallery">
   <h2>Hal-hal yang mengingatkanku padamu...</h2>
-  <p class="sub">sebenernya pengen isi foto kamu di sini, tapi aku belum punya hehehe ♡</p>
-  <div class="polaroids">
-    <div class="polaroid"><div class="ph">🌷</div><div class="cap">hal-hal kecil yang bikin hari lebih baik</div></div>
-    <div class="polaroid"><div class="ph">☁️</div><div class="cap">orang yang sering aku pikirin diam-diam</div></div>
-    <div class="polaroid"><div class="ph">✨</div><div class="cap">semoga harinya selalu baik</div></div>
+  <p class="sub">Maaf kalo lancang ngambil foto dari Ig, Maaf....</p>
+ <div class="polaroids">
+
+  <div class="polaroid">
+    <div class="ph">
+      <img src="chat-nanad.png" alt="Foto 1">
+    </div>
+    <div class="cap">hal-hal kecil yang bikin hari lebih baik</div>
   </div>
+
+  <div class="polaroid">
+    <div class="ph">
+      <img src="nanad.png" alt="Foto 2">
+    </div>
+    <div class="cap">orang yang sering aku pikirin diam-diam</div>
+  </div>
+
+<style>
+  .ph{
+  width:100%;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  border-radius:2px;
+}
+
+.ph img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+</style>
+
+  <div class="polaroid">
+    <div class="ph">
+      <img src="my-favorite.png" alt="Foto 3">
+    </div>
+    <div class="cap">semoga harinya selalu baik</div>
+  </div>
+
+</div>
 </section>
 
 <section id="final">
@@ -336,8 +377,9 @@
         <p style="font-family:'Caveat',cursive;color:#a8896a;margin-top:.5rem;font-size:.95rem">*pilih sesuai jumlah cut</p>
       </div>
 
-      <div class="controls" style="margin-top:1.2rem">
-        <button class="ctrl-btn" onclick="downloadStrip()" style="background:var(--gold); color:#1f1610; font-weight:bold">⬇ Unduh Strip</button>
+      <div class="controls" style="margin-top:1.2rem; flex-direction: column; align-items: stretch;">
+        <button class="ctrl-btn" onclick="downloadStrip()" style="background:var(--gold); color:#1f1610; font-weight:bold; margin-bottom: 0.5rem;">⬇ Unduh Strip</button>
+        <button class="ctrl-btn" onclick="shareToIG()" style="background:#E1306C; color:white; border-color:#E1306C; font-weight:bold;">📸 Share ke IG Story</button>
       </div>
     </div>
 
@@ -417,10 +459,8 @@
     <span class="washi washi-left"></span>
     <span class="washi washi-right"></span>
     <div class="music-cover" id="musicCover">
-      <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <rect width="200" height="200" fill="#cfe6e2"/>
-        <circle cx="100" cy="100" r="40" fill="#7aa89f" opacity="0.5"/>
-      </svg>
+      <!-- Music Cover Image - You can change the URL below to your own photo! -->
+      <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&q=80&w=300&h=300" alt="Music Cover" id="musicCoverImg">
     </div>
     <div class="music-row">
       <button class="m-btn" id="mLike">
@@ -510,7 +550,11 @@ async function startCam(){
 function snap(){
   const v=document.getElementById('video');
   const c=document.createElement('canvas');
-  c.width=800; c.height=600;
+  // Capture at 4:3 aspect ratio to prevent stretching
+  const vWidth = v.videoWidth;
+  const vHeight = v.videoHeight;
+  c.width=800; 
+  c.height=600;
   const ctx=c.getContext('2d');
   ctx.translate(c.width,0);ctx.scale(-1,1);
   ctx.drawImage(v,0,0,c.width,c.height);
@@ -679,17 +723,56 @@ function makeInteractive(el,resizeHandle){
   resizeHandle.addEventListener('pointerdown',e=>down(e,'resize'));
 }
 
-/* ===== DOWNLOAD via html2canvas ===== */
-async function downloadStrip(){
+/* ===== DOWNLOAD & SHARE ===== */
+async function generateCanvas(){
   document.querySelectorAll('.sticker.selected').forEach(s=>s.classList.remove('selected'));
   const node=document.getElementById('stripOuter');
+  // Use a higher scale for better quality and ensure no stretching
+  return await html2canvas(node,{
+    useCORS:true, 
+    allowTaint:true, 
+    backgroundColor:null, 
+    scale:3,
+    logging: false,
+    width: node.offsetWidth,
+    height: node.offsetHeight
+  });
+}
+
+async function downloadStrip(){
   try{
-    const canvas=await html2canvas(node,{useCORS:true, allowTaint:true, backgroundColor:null, scale:3});
+    const canvas = await generateCanvas();
     const a=document.createElement('a');
     a.download='photobooth-kenangan.png';
     a.href=canvas.toDataURL('image/png');
     a.click();
   }catch(err){alert('Gagal export: '+err.message);}
+}
+
+async function shareToIG(){
+  try{
+    const canvas = await generateCanvas();
+    // In modern browsers, we can't directly push to IG Story due to security.
+    // The best UX is to download the image and then redirect to Instagram.
+    const a=document.createElement('a');
+    a.download='photobooth-untuk-story.png';
+    a.href=canvas.toDataURL('image/png');
+    a.click();
+    
+    // Small delay to ensure download starts
+    setTimeout(() => {
+      if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)){
+        // Deep link to Instagram
+        window.location.href = "instagram://camera";
+        setTimeout(() => {
+          alert("Foto sudah terunduh! Silakan pilih foto dari galeri untuk diposting ke Story Instagram kamu. ♡");
+        }, 1000);
+      } else {
+        window.open("https://www.instagram.com/", "_blank");
+        alert("Foto sudah terunduh! Silakan buka Instagram di tab baru dan posting foto dari galerimu. ♡");
+      }
+    }, 1500);
+  }catch(err){alert('Gagal share: '+err.message);}
 }
 
 /* Music Logic */
