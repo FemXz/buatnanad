@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Quicksand:wght@400;500&family=Pacifico&family=Dancing+Script:wght@400;700&family=Permanent+Marker&family=Shadows+Into+Light&family=Indie+Flower&family=Sacramento&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
   :root{
     --cream:#fbf3e4; --cream-2:#f5e7c8; --sepia:#6b4a2b; --sepia-soft:#8a6a47;
@@ -35,7 +36,6 @@
   #letter h2.section-title{font-size:2.2rem;font-style:italic;color:var(--sepia);margin-bottom:.5rem}
   #letter .sub{color:var(--sepia-soft);margin-bottom:2.5rem;font-family:'Caveat',cursive;font-size:1.4rem}
 
-  /* Envelope Sizing - More compact for aesthetic feel */
   .envelope-stage{position:relative;width:min(400px,85vw);height:280px;perspective:1400px;margin-bottom:1.5rem}
   .envelope{position:absolute;inset:0;cursor:pointer;transition:transform 1.2s cubic-bezier(.7,.05,.3,1)}
   .envelope.opened{transform:translateY(30px) scale(.95)}
@@ -101,7 +101,6 @@
   .ctrl-btn:disabled{opacity:.4;cursor:not-allowed}
   .countdown{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:8rem;color:#fff;text-shadow:0 0 30px rgba(0,0,0,.6);pointer-events:none;z-index:11}
 
-  /* Force fixed dimensions for strip-outer and slot to prevent "gepeng" */
   .strip-outer{
     width: 240px; 
     margin: 0 auto; 
@@ -111,7 +110,8 @@
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     position: relative;
     overflow: hidden;
-    min-width: 240px; /* Locked width */
+    min-width: 240px;
+    height: auto;
   }
   .strip-outer:hover { transform: translateY(-5px); }
   
@@ -125,8 +125,8 @@
   }
   
   .strip .slot{
-    width: 210px; /* Fixed pixel width */
-    height: 157.5px; /* Fixed pixel height (4:3 ratio) */
+    width: 210px;
+    height: 157.5px;
     background: #1a1a1a;
     overflow: hidden;
     display: flex;
@@ -138,8 +138,14 @@
     box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
     border: 1px solid rgba(255,255,255,0.05);
     margin: 0 auto;
+    position: relative;
   }
-  .strip .slot img{width:100%;height:100%;object-fit:cover}
+  .strip .slot img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
   
   .strip .footer{
     margin-top: 15px;
@@ -153,7 +159,6 @@
     width: 100%;
   }
 
-  /* Stickers on strip */
   .sticker{position:absolute;cursor:move;user-select:none;touch-action:none;z-index:5}
   .sticker img{width:100%;height:100%;display:block;pointer-events:none;-webkit-user-drag:none}
   .sticker.selected{outline:2px dashed var(--gold);outline-offset:2px}
@@ -162,15 +167,18 @@
   .sticker .handle.resize{right:-7px;bottom:-7px;cursor:nwse-resize}
   .sticker .handle.del{left:-7px;top:-7px;cursor:pointer;background:#e07878;color:#fff;font-size:10px;line-height:10px;text-align:center;font-weight:bold}
 
-  /* Backgrounds */
-  .bg-classic{background:#fffaf0;color:var(--sepia)}
-  .bg-noir{background:#0a0a0a;color:#f0e6d0}
-  .bg-burgundy{background:linear-gradient(165deg,#4a0e1f,#2a0612);color:#f5d9c9}
-  .bg-rose{background:linear-gradient(160deg,#ffd9d9,#ff9ec0);color:#6b1f3a}
-  .bg-cream-floral{background:#fbf3e4;color:var(--sepia)}
-  .bg-gold{background:linear-gradient(140deg,#1a1208,#3a2410 60%,#c9a96e);color:#fff5e0}
-  .bg-stars{background:#0a0e2a radial-gradient(circle at 20% 30%,#fff 1px,transparent 1.5px),radial-gradient(circle at 70% 60%,#fff 1px,transparent 1.5px),radial-gradient(circle at 40% 80%,#fff 1px,transparent 1.5px),radial-gradient(circle at 85% 20%,#fff 1px,transparent 1.5px),radial-gradient(circle at 15% 75%,#fff 1px,transparent 1.5px);color:#e8d8ff}
-  .bg-custom{background-size:cover;background-position:center;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+  /* FIXED & AESTHETIC BACKGROUNDS */
+  .bg-classic{background:#fffaf0 !important; color:var(--sepia)}
+  .bg-noir{background:#1a1a1a !important; color:#f0e6d0}
+  .bg-burgundy{background:linear-gradient(165deg,#4a0e1f,#2a0612) !important; color:#f5d9c9}
+  .bg-rose{background:linear-gradient(160deg,#ffd9d9,#ff9ec0) !important; color:#6b1f3a}
+  .bg-cream-floral{background:#fbf3e4 !important; color:var(--sepia)}
+  .bg-gold{background:linear-gradient(140deg,#1a1208,#3a2410 60%,#c9a96e) !important; color:#fff5e0}
+  .bg-stars{background:#0a0e2a radial-gradient(circle at 20% 30%,#fff 1px,transparent 1.5px),radial-gradient(circle at 70% 60%,#fff 1px,transparent 1.5px),radial-gradient(circle at 40% 80%,#fff 1px,transparent 1.5px),radial-gradient(circle at 85% 20%,#fff 1px,transparent 1.5px),radial-gradient(circle at 15% 75%,#fff 1px,transparent 1.5px) !important; color:#e8d8ff}
+  .bg-lavender{background:linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%) !important; color:#2c3e50}
+  .bg-matcha{background:linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%) !important; color:#1e3d24}
+  .bg-sunset{background:linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%) !important; color:#4a1c40}
+  .bg-custom{background-size:cover !important; background-position:center !important; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.5)}
 
   .bg-picker{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin:1rem 0 1.5rem;max-width:420px}
   .bg-swatch{width:42px;height:42px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .2s, border-color .2s;background-size:cover;background-position:center;box-shadow: 0 4px 10px rgba(0,0,0,0.2)}
@@ -186,7 +194,6 @@
   .mode-tabs button.active{background:var(--gold);color:#1f1610;border-color:var(--gold);font-weight: bold}
   .hidden{display:none !important}
 
-  /* Editor panel */
   .editor{background:#1f1610;padding:1.5rem;border-radius:12px;width:300px;max-width:100%;color:#d4b88a;box-shadow: 0 10px 30px rgba(0,0,0,0.3)}
   .editor h3{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--cream-2);font-size:1.3rem;margin-bottom:.8rem;border-bottom:1px solid #3a2a1a;padding-bottom:.4rem}
   .editor label{display:block;font-family:'Caveat',cursive;font-size:1.1rem;color:#d4b88a;margin:.8rem 0 .3rem}
@@ -194,34 +201,15 @@
   .editor textarea{resize:vertical;min-height:60px}
   .editor input[type=range]{width:100%;accent-color: var(--gold)}
   .editor input[type=color]{width:50px;height:35px;border:none;background:transparent;cursor:pointer;padding:0}
-  .row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
-  .sticker-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.4rem;margin-top:.5rem;max-height:160px;overflow-y:auto;padding:.5rem;background:#2a1f15;border-radius:8px}
-  .sticker-grid img{width:100%;aspect-ratio:1;cursor:pointer;border-radius:6px;transition:transform 0.2s;background:#3a2a1a;padding:4px}
-  .sticker-grid img:hover{transform:scale(1.2);background:var(--gold)}
+  .row{display:flex;gap:1rem}
+  .row .col{flex:1}
+  .row .col label{margin-top:0}
   .small-btn{padding:.5rem 1rem;font-size:.9rem;border:1px solid var(--gold);color:var(--cream);background:transparent;border-radius:8px;cursor:pointer;font-family:'Cormorant Garamond',serif;transition: all 0.2s}
   .small-btn:hover{background:var(--gold);color:#1f1610}
 
   footer{padding:3rem;text-align:center;color:var(--sepia-soft);font-family:'Caveat',cursive;font-size:1.3rem;background:var(--cream)}
 
-  /* ============ RESPONSIVE ============ */
-  @media (max-width: 900px){
-    .booth-wrap{flex-direction: column; align-items: center; gap: 2rem;}
-    .camera, .editor { width: 100%; max-width: 440px; }
-  }
-  @media (max-width: 600px){
-    section{padding:3rem 1rem}
-    #opening h1{font-size:2.8rem}
-    .envelope-stage{width:min(320px,90vw); height:220px;}
-    .envelope.opened{transform:translateY(20px) scale(.95)}
-    .paper{padding:1.8rem 1.2rem; width:92vw;}
-    .paper p{font-size:1.2rem; line-height:1.4;}
-    .paper h2{font-size:1.4rem;}
-    /* Locked strip size even on mobile for download stability */
-    .strip-outer{width: 240px; padding: 20px 15px 40px;}
-    .strip .slot{width: 210px; height: 157.5px;}
-  }
-
-  /* Music FAB Styles */
+  /* Music Player Aesthetic */
   #musicFab{position:fixed;bottom:20px;right:20px;z-index:200;display:flex;align-items:center;gap:10px;background:rgba(255,250,240,.95);backdrop-filter:blur(8px);padding:8px 14px 8px 8px;border:1px solid rgba(201,169,110,.4);border-radius:999px;box-shadow:0 8px 24px rgba(107,74,43,.25);font-family:'Caveat',cursive;color:var(--sepia);cursor:pointer;transition:transform .25s, box-shadow .25s}
   #musicFab:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(107,74,43,.32)}
   #musicFab .fab-icon{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#d98a8a,#b85a5a);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 4px 10px rgba(184,90,90,.35)}
@@ -271,7 +259,7 @@
       </div>
       <div class="env-front"></div>
       <div class="env-flap"></div>
-      <div class="seal">M</div>
+      <div class="seal">N</div>
     </div>
     <div class="env-hint">— klik untuk membuka —</div>
   </div>
@@ -346,158 +334,132 @@
   <p class="sub">pilih background, edit teks, tempel stiker — lalu simpan</p>
 
   <div class="booth-wrap">
-    <!-- LEFT: camera -->
     <div class="camera">
-      <div class="mode-tabs">
-        <button class="active" data-mode="cam" onclick="setMode('cam')">📷 Kamera</button>
-        <button data-mode="up" onclick="setMode('up')">🖼️ Upload</button>
+      <div class="cam-box">
+        <video id="video" playsinline></video>
+        <div id="flash"></div>
+        <div id="countdown" class="countdown"></div>
       </div>
-
-      <div class="layouts">
-        <button data-cut="2" onclick="setCuts(2)">2 Cut</button>
-        <button data-cut="3" class="active" onclick="setCuts(3)">3 Cut</button>
-        <button data-cut="4" onclick="setCuts(4)">4 Cut</button>
-      </div>
-
-      <div id="camMode">
-        <div class="cam-box">
-          <video id="video" autoplay playsinline muted></video>
-          <div id="flash"></div>
-          <div class="countdown" id="countdown"></div>
-        </div>
-        <div class="controls">
-          <button class="ctrl-btn" id="startBtn" onclick="startCam()">Nyalakan Kamera</button>
-          <button class="ctrl-btn" id="snapBtn" onclick="startSnap()" disabled>Mulai Jepret</button>
-        </div>
-      </div>
-
-      <div id="upMode" class="hidden">
-        <p style="font-family:'Caveat',cursive;color:#d4b88a;margin-bottom:.6rem">Pilih foto dari galerimu</p>
-        <input type="file" id="fileInput" accept="image/*" multiple onchange="handleUpload(event)" style="display:none">
-        <div class="controls">
-          <button class="ctrl-btn" onclick="document.getElementById('fileInput').click()">Pilih Foto</button>
-          <button class="ctrl-btn" onclick="clearStrip()">Hapus Semua</button>
-        </div>
-        <p style="font-family:'Caveat',cursive;color:#a8896a;margin-top:.5rem;font-size:.95rem">*pilih sesuai jumlah cut</p>
-      </div>
-
-      <div class="controls" style="margin-top:1.2rem; flex-direction: column; align-items: stretch;">
-        <button class="ctrl-btn" onclick="downloadStrip()" style="background:var(--gold); color:#1f1610; font-weight:bold; margin-bottom: 0.5rem;">⬇ Unduh Strip</button>
-        <button class="ctrl-btn" onclick="shareToIG()" style="background:#E1306C; color:white; border-color:#E1306C; font-weight:bold;">📸 Share ke IG Story</button>
+      <div class="controls">
+        <button id="startBtn" class="ctrl-btn" onclick="startCam()">Nyalakan Kamera</button>
+        <button id="snapBtn" class="ctrl-btn" onclick="startSnap()" disabled>Ambil Foto</button>
       </div>
     </div>
 
-    <!-- MIDDLE: strip -->
-    <div style="display: flex; flex-direction: column; align-items: center;">
-      <p style="font-family:'Caveat',cursive;color:#d4b88a;margin-bottom:.8rem;text-align:center">Pilih background strip</p>
-      <div class="bg-picker" id="bgPicker">
-        <div class="bg-swatch active" data-bg="bg-classic" style="background:#fffaf0" title="Klasik"></div>
-        <div class="bg-swatch" data-bg="bg-noir" style="background:#0a0a0a" title="Noir"></div>
-        <div class="bg-swatch" data-bg="bg-burgundy" style="background:linear-gradient(165deg,#4a0e1f,#2a0612)" title="Burgundy"></div>
-        <div class="bg-swatch" data-bg="bg-rose" style="background:linear-gradient(160deg,#ffd9d9,#ff9ec0)" title="Rose"></div>
-        <div class="bg-swatch" data-bg="bg-cream-floral" style="background:#fbf3e4" title="Cream floral"></div>
-        <div class="bg-swatch" data-bg="bg-gold" style="background:linear-gradient(140deg,#1a1208,#c9a96e)" title="Gold"></div>
-        <div class="bg-swatch" data-bg="bg-stars" style="background:#0a0e2a" title="Stars"></div>
-        <div class="bg-swatch upload" title="Upload background sendiri" onclick="document.getElementById('bgUpload').click()">+</div>
-        <input type="file" id="bgUpload" accept="image/*" class="hidden" onchange="handleBgUpload(event)">
-      </div>
-
-      <div class="strip-outer bg-classic" id="stripOuter">
-        <div class="strip" id="strip">
-          <div class="footer" id="stripFooter">untuk kita ♡ 2026</div>
-        </div>
-      </div>
+    <div class="strip-outer bg-classic" id="stripOuter">
+      <div class="strip" id="strip"></div>
+      <div class="footer" id="stripFooter">untuk kita ♡ 2026</div>
     </div>
 
-    <!-- RIGHT: editor -->
     <div class="editor">
-      <h3>✎ Edit Teks Footer</h3>
-      <label>Teks</label>
-      <textarea id="footerText" oninput="updateFooter()">untuk kita ♡ 2026</textarea>
+      <h3>Editor</h3>
+      <div class="mode-tabs">
+        <button class="active" data-mode="cam" onclick="setMode('cam')">Kamera</button>
+        <button data-mode="up" onclick="setMode('up')">Upload</button>
+      </div>
+      <div id="camMode">
+        <label>Layout</label>
+        <div class="layouts">
+          <button class="active" data-cut="3" onclick="setCuts(3)">3 Foto</button>
+          <button data-cut="4" onclick="setCuts(4)">4 Foto</button>
+        </div>
+      </div>
+      <div id="upMode" class="hidden">
+        <label>Upload Foto</label>
+        <input type="file" multiple accept="image/*" onchange="handleUpload(event)">
+      </div>
+      <label style="margin-top: 1rem;">Background</label>
+      <div class="bg-picker" id="bgPicker">
+        <div class="bg-swatch active bg-classic" data-bg="bg-classic" title="Classic"></div>
+        <div class="bg-swatch bg-noir" data-bg="bg-noir" title="Noir"></div>
+        <div class="bg-swatch bg-burgundy" data-bg="bg-burgundy" title="Burgundy"></div>
+        <div class="bg-swatch bg-rose" data-bg="bg-rose" title="Rose"></div>
+        <div class="bg-swatch bg-cream-floral" data-bg="bg-cream-floral" title="Cream Floral"></div>
+        <div class="bg-swatch bg-gold" data-bg="bg-gold" title="Gold"></div>
+        <div class="bg-swatch bg-stars" data-bg="bg-stars" title="Stars"></div>
+        <div class="bg-swatch bg-lavender" data-bg="bg-lavender" title="Lavender"></div>
+        <div class="bg-swatch bg-matcha" data-bg="bg-matcha" title="Matcha"></div>
+        <div class="bg-swatch bg-sunset" data-bg="bg-sunset" title="Sunset"></div>
+        <div class="bg-swatch upload" title="Upload Background">
+          <input type="file" accept="image/*" onchange="handleBgUpload(event)" style="display:none" id="bgUploadInput">
+          <label for="bgUploadInput" style="cursor:pointer;width:100%;height:100%;display:flex;align-items:center;justify-content:center">+</label>
+        </div>
+      </div>
+      <label>Teks Footer</label>
+      <input type="text" id="footerText" value="untukmu My Favorite Person" onchange="updateFooter()" oninput="updateFooter()">
       <label>Font</label>
       <select id="footerFont" onchange="updateFooter()">
         <option value="'Caveat', cursive">Caveat</option>
-        <option value="'Dancing Script', cursive">Dancing Script</option>
         <option value="'Pacifico', cursive">Pacifico</option>
-        <option value="'Sacramento', cursive">Sacramento</option>
+        <option value="'Dancing Script', cursive">Dancing Script</option>
         <option value="'Permanent Marker', cursive">Permanent Marker</option>
         <option value="'Shadows Into Light', cursive">Shadows Into Light</option>
         <option value="'Indie Flower', cursive">Indie Flower</option>
-        <option value="'Cormorant Garamond', serif">Cormorant (italic)</option>
-        <option value="'Quicksand', sans-serif">Quicksand</option>
+        <option value="'Sacramento', cursive">Sacramento</option>
       </select>
-      <div class="row" style="margin-top:.5rem">
-        <div style="flex:1">
-          <label>Ukuran: <span id="sizeVal">16</span>px</label>
-          <input type="range" id="footerSize" min="10" max="40" value="16" oninput="updateFooter()">
-        </div>
-        <div>
-          <label>Warna</label>
-          <input type="color" id="footerColor" value="#6b4a2b" oninput="updateFooter()">
-        </div>
-      </div>
-      <h3 style="margin-top:1rem">✦ Stiker</h3>
-      <p style="font-family:'Caveat',cursive;font-size:.9rem;color:#a8896a">klik stiker → muncul di strip. Drag pindah, pojok kanan-bawah untuk resize, × hapus.</p>
-      <div class="sticker-grid" id="stickerGrid"></div>
-      <div class="row" style="margin-top:.5rem">
-        <button class="small-btn" onclick="document.getElementById('stickerUpload').click()">+ Upload Stiker</button>
-        <button class="small-btn" onclick="clearStickers()">Hapus Semua</button>
-        <input type="file" id="stickerUpload" accept="image/*" class="hidden" onchange="handleStickerUpload(event)">
-      </div>
+      <label>Ukuran Font <span id="sizeVal">20</span>px</label>
+      <input type="range" id="footerSize" min="12" max="40" value="20" onchange="updateFooter()" oninput="updateFooter()">
+      <label>Warna</label>
+      <input type="color" id="footerColor" value="#3a2a1a" onchange="updateFooter()">
+      <label style="margin-top: 1rem;">Stiker</label>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem" id="stickerGrid"></div>
+      <input type="file" accept="image/*" onchange="handleStickerUpload(event)" style="margin-bottom:.5rem">
+      <button class="small-btn" onclick="clearStickers()" style="width:100%">Hapus Semua Stiker</button>
+      <button class="small-btn" onclick="clearStrip()" style="width:100%;margin-top:.5rem">Reset</button>
+      <button class="small-btn" onclick="downloadStrip()" style="width:100%;margin-top:.5rem;background:var(--gold);color:#1f1610;border-color:var(--gold)">Download</button>
+      <button class="small-btn" onclick="shareToIG()" style="width:100%;margin-top:.5rem;background:#d98a8a;color:#fff;border-color:#d98a8a">Share ke IG</button>
     </div>
   </div>
 </section>
 
-<footer>terima kasih banyak ♡</footer>
-
-<!-- Floating Music FAB -->
-<button id="musicFab" type="button" title="Buka pemutar musik">
-  <span class="fab-icon" id="fabIcon">♪</span>
-  <span class="fab-label" id="fabLabel">putar musik</span>
-</button>
-
-<!-- Music Popup -->
-<div class="music-overlay" id="musicOverlay" aria-hidden="true">
+<div class="music-overlay" id="musicOverlay">
   <div class="music-card">
-    <button class="m-close" id="mClose">✕</button>
-    <span class="washi washi-left"></span>
-    <span class="washi washi-right"></span>
+    <button class="m-close" id="mClose">×</button>
+    <div class="washi washi-left"></div>
+    <div class="washi washi-right"></div>
     <div class="music-cover" id="musicCover">
-      <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&q=80&w=300&h=300" alt="Music Cover" id="musicCoverImg">
+      <img src="nanad.png" alt="Music Cover" onerror="this.src='chat-nanad.png'">
     </div>
     <div class="music-row">
-      <button class="m-btn" id="mLike">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span style="font-weight:bold">music</span>
+      <button class="m-btn" id="mPlay">
+        <svg id="mPlayIcon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
       </button>
     </div>
     <div class="music-progress-container" id="progressContainer">
       <div class="music-progress" id="musicProgress"></div>
-      <div class="music-time"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
     </div>
-    <div class="music-controls">
-      <button class="m-btn" id="mPrev"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
-      <button class="m-btn" id="mPlay" style="background:var(--rose);color:white;width:50px;height:50px;border-radius:50%"><svg id="mPlayIcon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
-      <button class="m-btn" id="mNext"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
+    <div class="music-time">
+      <span id="currentTime">0:00</span>
+      <span id="duration">0:00</span>
     </div>
   </div>
 </div>
+
+<div id="musicFab">
+  <div class="fab-icon">♫</div>
+  <div class="fab-label">music</div>
+</div>
+
 <audio id="bgAudio" loop></audio>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<footer>
+Terimakasih banyakk
+</footer>
+
 <script>
 /* sparkles */
-(function(){
-  const s=document.getElementById('sparkles');
-  for(let i=0;i<25;i++){
-    const d=document.createElement('div');
-    d.className='sparkle';
-    d.style.left=Math.random()*100+'%';
-    d.style.animationDelay=(Math.random()*9)+'s';
-    d.style.animationDuration=(6+Math.random()*6)+'s';
-    d.style.width=d.style.height=(3+Math.random()*5)+'px';
-    s.appendChild(d);
-  }
-})();
+function createSparkle(){
+  const s=document.createElement('div');
+  s.className='sparkle';
+  s.style.left=Math.random()*100+'%';
+  s.style.animationDelay=Math.random()*2+'s';
+  document.getElementById('sparkles').appendChild(s);
+  setTimeout(()=>s.remove(),9000);
+}
+setInterval(createSparkle,300);
 
 /* envelope */
 function openEnvelope(){
@@ -544,32 +506,57 @@ function setMode(m){
 /* camera */
 async function startCam(){
   try{
-    stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false});
+    stream=await navigator.mediaDevices.getUserMedia({
+      video:{
+        facingMode:'user',
+        width: { ideal: 1280 },
+        height: { ideal: 720 }
+      },
+      audio:false
+    });
     document.getElementById('video').srcObject=stream;
     document.getElementById('startBtn').disabled=true;
     document.getElementById('snapBtn').disabled=false;
   }catch(e){alert('Tidak bisa akses kamera: '+e.message)}
 }
+
 function snap(){
   const v=document.getElementById('video');
   const c=document.createElement('canvas');
   c.width=800; 
   c.height=600;
   const ctx=c.getContext('2d');
-  ctx.translate(c.width,0);ctx.scale(-1,1);
-  ctx.drawImage(v,0,0,c.width,c.height);
-  return c.toDataURL('image/jpeg',.9);
+  const videoAspect = v.videoWidth / v.videoHeight;
+  const targetAspect = c.width / c.height;
+  let sx, sy, sw, sh;
+  if (videoAspect > targetAspect) {
+    sh = v.videoHeight;
+    sw = v.videoHeight * targetAspect;
+    sx = (v.videoWidth - sw) / 2;
+    sy = 0;
+  } else {
+    sw = v.videoWidth;
+    sh = v.videoWidth / targetAspect;
+    sx = 0;
+    sy = (v.videoHeight - sh) / 2;
+  }
+  ctx.translate(c.width, 0);
+  ctx.scale(-1, 1);
+  ctx.drawImage(v, sx, sy, sw, sh, 0, 0, c.width, c.height);
+  return c.toDataURL('image/jpeg', 0.9);
 }
+
 function flash(){
   const f=document.getElementById('flash');
   f.style.transition='none';f.style.opacity='.95';
   requestAnimationFrame(()=>{f.style.transition='opacity .6s';f.style.opacity='0';});
 }
+
 async function startSnap(){
   if(!stream){alert('Nyalakan kamera dulu');return;}
   document.getElementById('snapBtn').disabled=true;
   const cd=document.getElementById('countdown');
-  photos=[];buildStrip();
+  photos=[]; buildStrip();
   for(let i=0;i<cuts;i++){
     for(let n=3;n>0;n--){cd.textContent=n;await wait(800);}
     cd.textContent='';
@@ -583,22 +570,55 @@ async function startSnap(){
 }
 function wait(ms){return new Promise(r=>setTimeout(r,ms))}
 
-/* upload photos */
-function handleUpload(e){
-  const files=[...e.target.files].slice(0,cuts);
-  photos=[];
-  let loaded=0;
-  files.forEach((f,i)=>{
-    const r=new FileReader();
-    r.onload=ev=>{photos[i]=ev.target.result;if(++loaded===files.length)buildStrip();};
-    r.readAsDataURL(f);
+async function processImage(dataUrl) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      const c = document.createElement('canvas');
+      c.width = 800;
+      c.height = 600;
+      const ctx = c.getContext('2d');
+      const imgAspect = img.width / img.height;
+      const targetAspect = c.width / c.height;
+      let sx, sy, sw, sh;
+      if (imgAspect > targetAspect) {
+        sh = img.height;
+        sw = img.height * targetAspect;
+        sx = (img.width - sw) / 2;
+        sy = 0;
+      } else {
+        sw = img.width;
+        sh = img.width / targetAspect;
+        sx = 0;
+        sy = (img.height - sh) / 2;
+      }
+      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, c.width, c.height);
+      resolve(c.toDataURL('image/jpeg', 0.9));
+    };
+    img.src = dataUrl;
   });
 }
+
+async function handleUpload(e){
+  const files=[...e.target.files].slice(0,cuts);
+  photos=[];
+  for(let i=0; i<files.length; i++) {
+    const dataUrl = await new Promise(r => {
+      const reader = new FileReader();
+      reader.onload = ev => r(ev.target.result);
+      reader.readAsDataURL(files[i]);
+    });
+    photos[i] = await processImage(dataUrl);
+    buildStrip();
+  }
+}
+
 function clearStrip(){photos=[];buildStrip();}
 
-/* backgrounds */
-const BG_CLASSES=['bg-classic','bg-noir','bg-burgundy','bg-rose','bg-cream-floral','bg-gold','bg-stars','bg-custom'];
+/* backgrounds logic fixed */
+const BG_CLASSES=['bg-classic','bg-noir','bg-burgundy','bg-rose','bg-cream-floral','bg-gold','bg-stars','bg-lavender','bg-matcha','bg-sunset','bg-custom'];
 let currentBg='bg-classic', customBgUrl=null;
+
 function setBg(cls){
   const o=document.getElementById('stripOuter');
   BG_CLASSES.forEach(c=>o.classList.remove(c));
@@ -606,9 +626,11 @@ function setBg(cls){
   if(cls==='bg-custom' && customBgUrl) o.style.backgroundImage=`url(${customBgUrl})`;
   else o.style.backgroundImage='';
   currentBg=cls;
-  document.querySelectorAll('.bg-swatch[data-bg]').forEach(s=>s.classList.toggle('active',s.dataset.bg===cls));
+  document.querySelectorAll('.bg-swatch').forEach(s=>s.classList.toggle('active',s.dataset.bg===cls));
 }
+
 document.querySelectorAll('.bg-swatch[data-bg]').forEach(s=>s.addEventListener('click',()=>setBg(s.dataset.bg)));
+
 function handleBgUpload(e){
   const f=e.target.files[0];if(!f)return;
   const r=new FileReader();
@@ -628,7 +650,6 @@ function handleBgUpload(e){
   r.readAsDataURL(f);
 }
 
-/* ===== FOOTER EDITOR ===== */
 function updateFooter(){
   const t=document.getElementById('footerText').value;
   const f=document.getElementById('footerFont').value;
@@ -639,11 +660,9 @@ function updateFooter(){
   el.style.fontFamily=f;
   el.style.fontSize=s+'px';
   el.style.color=c;
-  el.style.textShadow='none';
   document.getElementById('sizeVal').textContent=s;
 }
 
-/* ===== STICKERS ===== */
 const TWEMOJI='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/';
 const STICKER_EMOJIS=[
   '2764','1f495','1f496','1f497','1f49e','1f48c', '1f338','1f33a','1f339','1f337','1f33b','1f490',
@@ -723,26 +742,26 @@ function makeInteractive(el,resizeHandle){
   resizeHandle.addEventListener('pointerdown',e=>down(e,'resize'));
 }
 
-/* ===== DOWNLOAD & SHARE - ANTI GEPENG FIX ===== */
 async function generateCanvas(){
   document.querySelectorAll('.sticker.selected').forEach(s=>s.classList.remove('selected'));
   const node=document.getElementById('stripOuter');
-  
-  // Use a fixed scale and explicitly set width/height to avoid mobile scaling issues
   return await html2canvas(node,{
     useCORS:true, 
     allowTaint:true, 
     backgroundColor:null, 
-    scale:3,
+    scale: 3,
     logging: false,
-    width: 240, // Match fixed width in CSS
-    height: node.offsetHeight,
-    windowWidth: 1200, // Force a desktop-like viewport for consistent rendering
+    width: 240,
     onclone: (clonedDoc) => {
-      // Ensure the cloned element has fixed dimensions
       const clonedNode = clonedDoc.getElementById('stripOuter');
-      clonedNode.style.width = '240px';
       clonedNode.style.transform = 'none';
+      clonedNode.style.width = '240px';
+      clonedNode.style.margin = '0';
+      clonedNode.querySelectorAll('.slot img').forEach(img => {
+        img.style.objectFit = 'cover';
+        img.style.width = '100%';
+        img.style.height = '100%';
+      });
     }
   });
 }
@@ -764,7 +783,6 @@ async function shareToIG(){
     a.download='photobooth-untuk-story.png';
     a.href=canvas.toDataURL('image/png');
     a.click();
-    
     setTimeout(() => {
       if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)){
         window.location.href = "instagram://camera";
@@ -804,7 +822,7 @@ async function shareToIG(){
   overlay.addEventListener('click', e => { if(e.target === overlay) overlay.classList.remove('open'); });
 
   playBtn.addEventListener('click', ()=>{
-    if(audio.paused) audio.play().then(()=> setPlayingUI(true));
+    if(audio.paused) audio.play().then(()=> setPlayingUI(true)).catch(e=>console.log("Playback error:", e));
     else { audio.pause(); setPlayingUI(false); }
   });
 
