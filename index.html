@@ -36,7 +36,7 @@
   #letter h2.section-title{font-size:2.2rem;font-style:italic;color:var(--sepia);margin-bottom:.5rem}
   #letter .sub{color:var(--sepia-soft);margin-bottom:2.5rem;font-family:'Caveat',cursive;font-size:1.4rem}
 
-  .envelope-stage{position:relative;width:min(400px,85vw);height:280px;perspective:1400px;margin-bottom:1.5rem}
+  .envelope-stage{position:relative;width:min(400px, 85vw);height:280px;perspective:1400px;margin-bottom:1.5rem}
   .envelope{position:absolute;inset:0;cursor:pointer;transition:transform 1.2s cubic-bezier(.7,.05,.3,1)}
   .envelope.opened{transform:translateY(30px) scale(.95)}
   .env-body{position:absolute;inset:0;background:linear-gradient(160deg,#e8b8b8,#c97676);border-radius:6px;box-shadow:0 25px 50px -15px rgba(107,42,42,.55), inset 0 0 40px rgba(0,0,0,.08)}
@@ -96,7 +96,7 @@
   #flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;border-radius:8px;z-index:10}
   .cam-box{position:relative;overflow:hidden;border-radius:8px}
   .controls{margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
-  .ctrl-btn{padding:.7rem 1.4rem;border:1.5px solid var(--gold);color:var(--cream);background:transparent;border-radius:999px;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:1rem;letter-spacing:.05em;transition:all .3s}
+  .ctrl-btn{padding:.7rem 1.4rem;border:1.5px solid var(--gold);color:var(--cream);background:transparent;border-radius:999px;font-family:'Cormorant Garamond',serif;font-size:1rem;letter-spacing:.05em;cursor:pointer;transition:all .3s}
   .ctrl-btn:hover{background:var(--gold);color:#1f1610}
   .ctrl-btn:disabled{opacity:.4;cursor:not-allowed}
   .countdown{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:8rem;color:#fff;text-shadow:0 0 30px rgba(0,0,0,.6);pointer-events:none;z-index:11}
@@ -197,7 +197,7 @@
   .editor{background:#1f1610;padding:1.5rem;border-radius:12px;width:300px;max-width:100%;color:#d4b88a;box-shadow: 0 10px 30px rgba(0,0,0,0.3)}
   .editor h3{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--cream-2);font-size:1.3rem;margin-bottom:.8rem;border-bottom:1px solid #3a2a1a;padding-bottom:.4rem}
   .editor label{display:block;font-family:'Caveat',cursive;font-size:1.1rem;color:#d4b88a;margin:.8rem 0 .3rem}
-  .editor input[type=text],.editor textarea,.editor select{width:100%;padding:.6rem;background:#2a1f15;border:1px solid #3a2a1a;color:var(--cream);border-radius:8px;font-family:inherit;font-size:.95rem}
+  .editor input[type=text],.editor textarea,.editor select{width:100%;padding:.6rem;border:1px solid #3a2a1a;background:#1a140e;color:var(--cream);border-radius:6px;font-family:inherit;margin-bottom:.5rem}
   .editor textarea{resize:vertical;min-height:60px}
   .editor input[type=range]{width:100%;accent-color: var(--gold)}
   .editor input[type=color]{width:50px;height:35px;border:none;background:transparent;cursor:pointer;padding:0}
@@ -234,6 +234,26 @@
   .m-btn:hover{transform:scale(1.12)}
   .m-btn.liked{color:#c97676}
   .m-close{position:absolute;top:-10px;right:-10px;background:#f6efe2;border:1px solid rgba(58,42,26,.15);color:#6b5b48;width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.12);transition:all .2s;z-index:2;font-size:14px;line-height:1}
+
+  /* MOBILE RESPONSIVE FIXES */
+  @media (max-width: 768px) {
+    section { padding: 3rem 1rem; }
+    #opening h1 { font-size: 2.5rem; }
+    #opening p { font-size: 1rem; }
+    .envelope-stage { height: 220px; margin-bottom: 2rem; }
+    .paper { padding: 1.5rem 1rem; }
+    .paper p { font-size: 1.15rem; }
+    .polaroids { gap: 1rem; }
+    .polaroid { width: 140px; padding: 8px 8px 30px; }
+    .polaroid .cap { font-size: 0.9rem; margin-top: 8px; }
+    .booth-wrap { gap: 1.5rem; }
+    .camera, .editor { width: 100%; }
+    #booth h2 { font-size: 2rem; }
+    #final h2 { font-size: 1.8rem; }
+    .strip-outer { transform: scale(0.9); margin: -20px auto; }
+    #musicFab .fab-label { display: none; }
+    #musicFab { padding: 8px; }
+  }
 </style>
 </head>
 <body>
@@ -336,7 +356,8 @@
   <div class="booth-wrap">
     <div class="camera">
       <div class="cam-box">
-        <video id="video" playsinline></video>
+        <!-- FIXED: Added autoplay and muted to prevent black screen on some browsers -->
+        <video id="video" playsinline autoplay muted></video>
         <div id="flash"></div>
         <div id="countdown" class="countdown"></div>
       </div>
@@ -498,7 +519,6 @@ function setCuts(n){
 }
 function setMode(m){
   mode=m;
-  document.querySelectorAll('.mode-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));
   document.getElementById('camMode').classList.toggle('hidden',m!=='cam');
   document.getElementById('upMode').classList.toggle('hidden',m!=='up');
 }
@@ -514,7 +534,11 @@ async function startCam(){
       },
       audio:false
     });
-    document.getElementById('video').srcObject=stream;
+    const video = document.getElementById('video');
+    video.srcObject=stream;
+    // FIXED: Explicitly call play() to ensure video starts
+    video.play();
+    
     document.getElementById('startBtn').disabled=true;
     document.getElementById('snapBtn').disabled=false;
   }catch(e){alert('Tidak bisa akses kamera: '+e.message)}
@@ -737,7 +761,10 @@ function makeInteractive(el,resizeHandle){
     }
   }
   function up(){drag=null;window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',up);}
-  function evtPos(e){return {x:e.clientX,y:e.clientY};}
+  function evtPos(e){
+    if (e.touches && e.touches.length > 0) return {x:e.touches[0].clientX, y:e.touches[0].clientY};
+    return {x:e.clientX,y:e.clientY};
+  }
   el.addEventListener('pointerdown',e=>down(e,'move'));
   resizeHandle.addEventListener('pointerdown',e=>down(e,'resize'));
 }
